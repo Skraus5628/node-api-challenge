@@ -52,6 +52,7 @@ router.post('/', validateProjectId ,(req, res) => {
         res.status(201).json(action);
     })
     .catch(err => {
+        console.log(err);
         res.status(500).json({
             message: 'Error adding the action',
         });

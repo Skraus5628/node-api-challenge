@@ -1,14 +1,15 @@
 const express = require('express');
 const projectRouter = require('./data/projects/projectRouter');
 const actionRouter = require('./data/actions/actionRouter');
-const logger = require('./middleware/logger');
-
 const server = express();
-server.use(logger())
 const port = 4000
+const cors = require('cors')
 
+
+server.use(express.json()); 
 server.use('/projects', projectRouter);
 server.use('/actions', actionRouter);
+
 
 server.get('/', (req, res) =>{
     res.json({
@@ -22,5 +23,4 @@ server.get('/', (req, res) =>{
 })
 
 
-
-server.use(express.json()); 
+server.use(cors)
